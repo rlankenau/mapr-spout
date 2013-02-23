@@ -99,6 +99,7 @@ public class Server {
         bootstrap.registerConnectionEventListener(listener);
 
         bootstrap.bind();
+	System.out.println("Listening on " + InetAddress.getLocalHost().getHostAddress() + ":" + port);
     }
 
     public static class Info {
