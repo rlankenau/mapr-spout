@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package com.mapr.franz.catcher;
-
-import com.googlecode.protobuf.pro.duplex.PeerInfo;
-
 /**
- * Encapsulates the connection process so that we can replace it during testing.
+ * This defines the envelope that contains application level messages while
+ * in the queue.
  */
-public class ConnectionFactory {
-    public CatcherConnection create(PeerInfo server) {
-        return CatcherConnection.connect(server);
-    }
+
+option java_generic_services = true;
+option java_package = "com.mapr.franz.catcher.wire";
+option java_outer_classname = "MessageQueue";
+
+message Message {
+    optional int64 time = 1;
+    optional bytes payload = 2;
 }
